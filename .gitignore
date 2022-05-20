@@ -1,2 +1,6 @@
 .terraform/*
 access.auto.tfvars
+Learnings.txt
+backend.json
+outside-subnet
+
