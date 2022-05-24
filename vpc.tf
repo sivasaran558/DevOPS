@@ -6,6 +6,8 @@ resource "aws_vpc" "default" {
     Name        = var.vpc_name
     Owner       = var.vpc_owner
     environment = var.environment
+    project     = local.projectname
+    Costcenter  = local.Costcenter
   }
 
 }
@@ -13,7 +15,9 @@ resource "aws_vpc" "default" {
 resource "aws_internet_gateway" "default" {
   vpc_id = aws_vpc.default.id
   tags = {
-    Name = "${var.vpc_name}-IGW"
+    Name       = "${var.vpc_name}-IGW"
+    project    = local.projectname
+    Costcenter = local.Costcenter
   }
 
 }
