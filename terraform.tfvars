@@ -8,6 +8,9 @@ public_subnet1_cidr = "10.66.1.0/24"
 public_subnet2_cidr = "10.66.2.0/24"
 public_subnet3_cidr = "10.66.3.0/24"
 public_subnet4_cidr = "10.66.4.0/24"
+imagename           = "ami-0c4f7023847b90238"
+instance_type       = "t2.micro"
+key_name            = "Siva_AWS"
 
 
 

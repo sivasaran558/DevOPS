@@ -22,6 +22,11 @@ output "subnet4_id" {
 }
 
 output "securitygroups" {
-    value = aws_security_group.allow_all.id
-  
+  value = aws_security_group.allow_all.id
+
+}
+
+output "DynamoDB_Details_id" {
+  value = aws_dynamodb_table.devops-terraform-state-lock-dynamo.id
+
 }
