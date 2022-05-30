@@ -1,33 +1,32 @@
-resource "aws_subnet" "subnet1-public" {
+resource "aws_subnet" "public-subnets" {
   # Arguments
+  #count = 3 
+  count             = length(var.public_cidr_blocks)
   vpc_id            = aws_vpc.default.id
-  cidr_block        = var.public_subnet1_cidr
-  availability_zone = "us-east-1a"
+  cidr_block        = element(var.public_cidr_blocks, count.index)
+  availability_zone = element(var.availability_zone, count.index)
 
   tags = {
-    Name = "${aws_vpc.default.id}-public-subnet-1"
+    Name = "${var.vpc_name}-publicSubnet-${count.index + 1}"
   }
 }
 
-resource "aws_subnet" "subnet2-public" {
+resource "aws_subnet" "private-subnets" {
   # Arguments
+  #count = 3 
+  count             = length(var.private_cidr_blocks)
   vpc_id            = aws_vpc.default.id
-  cidr_block        = var.public_subnet2_cidr
-  availability_zone = "us-east-1b"
+  cidr_block        = element(var.private_cidr_blocks, count.index)
+  availability_zone = element(var.availability_zone, count.index)
 
   tags = {
-    Name = "${aws_vpc.default.id}-public-subnet-2"
+    Name = "${var.vpc_name}-privateSubnet-${count.index + 1}"
   }
 }
 
-resource "aws_subnet" "subnet3-public" {
-  # Arguments
-  vpc_id            = aws_vpc.default.id
-  cidr_block        = var.public_subnet3_cidr
-  availability_zone = "us-east-1c"
 
-  tags = {
-    Name = "${aws_vpc.default.id}-public-subnet-3"
-  }
 
-}
+
+
+
+
